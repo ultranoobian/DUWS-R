@@ -1,6 +1,5 @@
 diag_log format ["------------------ DUWS-R START ----v0------ player: %1", profileName];
 
-
 if (isDedicated) exitWith {};
 waitUntil {!isNull player};
 
@@ -8,16 +7,12 @@ player allowDamage false;
 
 persistent_stat_script_init = [] execVM "persistent\persistent_stats_init.sqf";
 waitUntil {scriptDone persistent_stat_script_init};
-execvm "dynamic_music\dyn_music_init.sqf";
-
+execVM "dynamic_music\dyn_music_init.sqf";
 
 #include "dialog\supports_init.hpp"
 #include "dialog\squad_number_init.hpp"
 
 if (hasInterface) then { execVM "misc\gps_marker.sqf";};
-if (!isMultiplayer) then {
-	getsize_script = [player] execVM "mapsize.sqf";
-};
 
 // IF MP
 if (isMultiplayer) then {
@@ -84,14 +79,10 @@ if (isMultiplayer) then {
 	player globalChat format ["gamemaster: %1", game_master];
 	player globalChat format ["HQ_pos_found_generated: %1", HQ_pos_found_generated];
 
-	if (!isDedicated && !HQ_pos_found_generated) then { // SERVER INIT
+	if (!HQ_pos_found_generated) then {
 		if (((vehiclevarname player) in game_master)) then {
-			DUWS_host_start = false;
-			publicVariable "DUWS_host_start";
 			waitUntil {time > 0.1};
 			getsize_script = [player] execVM "mapsize.sqf";
-			DUWS_host_start = true;
-			publicVariable "DUWS_host_start";
 
 			// init High Command
 			_handle = [] execVM "dialog\hc_init.sqf";
@@ -103,25 +94,18 @@ if (isMultiplayer) then {
 player globalChat format ["gamemaster: %1", game_master];
 player globalChat format ["HQ_pos_found_generated: %1", HQ_pos_found_generated];
 
-if (!isDedicated && !HQ_pos_found_generated) then { // SERVER INIT
+if (!HQ_pos_found_generated) then { // SERVER INIT
     if (((vehiclevarname player) in game_master)) then {
-        DUWS_host_start = false;
-        publicVariable "DUWS_host_start";
         waitUntil {time > 0.1};
         getsize_script = [player] execVM "mapsize.sqf";
-        DUWS_host_start = true;
-        publicVariable "DUWS_host_start";
 
         // init High Command
         _handle = [] execVM "dialog\hc_init.sqf";
         waitUntil {scriptDone getsize_script};
-    };
-};
 
-if (!isDedicated && !HQ_pos_found_generated) then {
-    if (((vehiclevarname player) in game_master)) then {
         _null = [] execVM "dialog\startup\hq_placement\placement.sqf";
         waitUntil {chosen_hq_placement};
+
         player globalChat format ["hq_manually_placed: %1", hq_manually_placed];
         player globalChat format ["player_is_choosing_hqpos: %1", player_is_choosing_hqpos];
         // create random HQ
@@ -156,10 +140,10 @@ if (hasInterface) then {
         player enableStamina false;
     };
 };
-
+/*
 if (!isMultiplayer) then {
     _handle = [] execVM "dialog\hc_init.sqf";
-};
+};*/
 
 // INIT the operative listexecVM "misc\gameHelp.sqf";
 execVM "dialog\operative\operator_init.sqf";
