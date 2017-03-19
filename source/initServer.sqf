@@ -1,6 +1,3 @@
-if (!isServer) exitWith {};
-
-
 //////////////////////////////////////////////////////
 //  HOW TO MANUALLY CREATE THE MISSION:
 //  1)YOU MUST PLACE THE HQ LOCATION

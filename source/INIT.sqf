@@ -1,7 +1,6 @@
 diag_log format ["------------------ DUWS-R START ----v0------ player: %1", profileName];
 
 
-if (isServer) then { nul = [] execVM "serverinit.sqf"; };
 if (isDedicated) exitWith {};
 waitUntil {!isNull player};
 
