@@ -4,7 +4,7 @@ ctrlSetText [1000, format["%1",commandpointsblu1]];
 ctrlSetText [1001, format["%1",zoneundercontrolblu]];
 ctrlSetText [1002, format["%1",WARCOM_blufor_ap]];
 
-// UNITS  
+// UNITS
 _index = lbAdd [2100, "Rifleman(2CP)"];                  // 0
 _index = lbAdd [2100, "Grenadier(3CP)"];                 // 1
 _index = lbAdd [2100, "Automatic Rifleman(3CP)"];        // 2
@@ -21,7 +21,7 @@ _index = lbAdd [2100, "Explosive specialist(4CP)"];      // 12
 
 lbSetCurSel [2100, 0];
 
-// SQUADS  
+// SQUADS
 _index0 = lbAdd [2101, "Fireteam(8CP)"];                   // 0
 _index0 = lbAdd [2101, "Rifle Squad(16CP)"];               // 1
 _index0 = lbAdd [2101, "Weapons Squad(18CP)"];             // 2
@@ -91,6 +91,7 @@ index_support_helotaxi = lbAdd [2103, "Helicopter Taxi(3CP)"];                //
 index_support_cluster = lbAdd [2103, "Mk.20 II CBU(25CP)"];                   // 10
 index_support_training = lbAdd [2103, "Specialized Infantry training(20CP)"]; // 11
 index_support_boattaxi = lbAdd [2103, "Boat Taxi(2CP)"];                      // 12
+index_support_CAS = lbAdd [2103, "CAS EXP"];                      // 13
 
 //  lbSetCurSel [2103, 0];
 if (support_supplydrop_available) then {

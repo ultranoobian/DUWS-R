@@ -219,6 +219,17 @@ switch (_index2) do {
             hint "Not enough command points";
         };
     };
+    case 13: {
+        if (commandpointsblu1 >= 1) then {
+                commandpointsblu1 = commandpointsblu1 - 1;
+                ctrlSetText [1000, format["%1",commandpointsblu1]];
+                //lbSetColor [2103, index_support_boattaxi, [0, 1, 0, 1]];
+                _supplydrop = [player,"HC_CAS"] call BIS_fnc_addCommMenuItem;
+                playSound "boots";
+        } else {
+            hint "Not enough command points";
+        };
+    };
 };
 //hint format["index: %1",_index2];
 publicVariable "commandpointsblu1";

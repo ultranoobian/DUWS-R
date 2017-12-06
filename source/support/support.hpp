@@ -44,7 +44,7 @@ class CfgCommunicationMenu
     {
         text = "Supply drop (2 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [player] execVM 'support\ammobox.sqf'"; 
+        expression = "_null = [player] execVM 'support\ammobox.sqf'";
         icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa"; // Icon displayed permanently next to the command menu
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -54,7 +54,7 @@ class CfgCommunicationMenu
     {
         text = "Airborne troops (25 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [player] execVM 'support\paradrop.sqf'"; 
+        expression = "_null = [player] execVM 'support\paradrop.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\BasicStances_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -64,7 +64,7 @@ class CfgCommunicationMenu
     {
         text = "UAV Recon (3 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = execVM 'support\mapclickuav.sqf'"; 
+        expression = "_null = execVM 'support\mapclickuav.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\Radar_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -74,7 +74,7 @@ class CfgCommunicationMenu
     {
         text = "Vehicle Refit (2 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = execVM 'support\veh_refit.sqf'"; 
+        expression = "_null = execVM 'support\veh_refit.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\VehicleAmmo_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -84,7 +84,7 @@ class CfgCommunicationMenu
     {
         text = "Establish FOB (10 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [getpos player, 500] execVM 'support\fob.sqf'"; 
+        expression = "_null = [getpos player, 500] execVM 'support\fob.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\Head_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -94,7 +94,7 @@ class CfgCommunicationMenu
     {
         text = "Helicopter taxi(1 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaxi.sqf'"; 
+        expression = "_nill = [getpos player,50] execVM 'support\taxi\helotaxi.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\TakeOff_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -104,7 +104,7 @@ class CfgCommunicationMenu
     {
         text = "Mk.20 II CBU (6 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [1, 250, 1, 90, 1, 6, 'grenade'] execVM 'support\cluster\mapclickcluster.sqf'"; 
+        expression = "_null = [1, 250, 1, 90, 1, 6, 'grenade'] execVM 'support\cluster\mapclickcluster.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\Death_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
@@ -114,13 +114,23 @@ class CfgCommunicationMenu
     {
         text = "Boat taxi (1 CP)"; // Text displayed in the menu and in a notification
         submenu = ""; // Submenu opened upon activation
-        expression = "_null = [getpos player,10] execVM 'support\taxi\boattaxi.sqf'"; 
+        expression = "_null = [getpos player,10] execVM 'support\taxi\boattaxi.sqf'";
         icon = "\a3\ui_f\data\gui\cfg\hints\BasicDive_ca.paa";
         cursor = ""; // Custom cursor displayed when the item is selected
         enable = "1"; // Simple expression condition for enabling the item
         removeAfterExpressionCall = 1; // 1 to remove the item after calling
     };
-};                             
+    class HC_CAS
+    {
+            text = "CAS plane (x CP)";
+            submenu = "";
+            expression = "_null = [] execVM 'support\hc_cas.sqf'";
+            icon = "";
+            cursor = "";
+            enable = "1"; // Simple expression condition for enabling the item
+            removeAfterExpressionCall = 1; // 1 to remove the item after calling
+    };
+};
 
 
 
