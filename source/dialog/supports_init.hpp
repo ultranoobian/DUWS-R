@@ -9,6 +9,7 @@ support_veh_refit_available = false;
 support_helotaxi_available = false;
 support_boattaxi_available = false;
 support_cluster_available = false;
+support_HC_CAS_available = false;
 
 if (isNil "support_specialized_training_available") then {
     support_specialized_training_available = false;

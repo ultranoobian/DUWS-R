@@ -221,11 +221,14 @@ switch (_index2) do {
     };
     case 13: {
         if (commandpointsblu1 >= 1) then {
+			if (!support_HC_CAS_available) then {
                 commandpointsblu1 = commandpointsblu1 - 1;
                 ctrlSetText [1000, format["%1",commandpointsblu1]];
-                //lbSetColor [2103, index_support_boattaxi, [0, 1, 0, 1]];
-                _supplydrop = [player,"HC_CAS"] call BIS_fnc_addCommMenuItem;
+                _menuNumber = [player,"HC_CAS"] call BIS_fnc_addCommMenuItem;
                 playSound "boots";
+			} else {
+            hint "Not enough command points";
+			};
         } else {
             hint "Not enough command points";
         };
