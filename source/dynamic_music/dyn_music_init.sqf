@@ -27,3 +27,4 @@ else
 	player addEventHandler ["FiredNear", {[] spawn DUWS_dynmusic_firednear}];
 	};
 };
+dynamic_music_EH_firednear = player addEventHandler ["FiredNear", {[] spawn DUWS_dynmusic_firednear}];
