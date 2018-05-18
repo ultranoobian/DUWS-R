@@ -1,0 +1,59 @@
+DUWS-R-AIRFIX.altis
+
+	Random_veh.sqf - line 64 down
+
+	random_veh_opf_patrol.sqf - line 55 down - notes in script
+
+	random_veh_blu_patrol.sqf - Line 55 down - notes in script
+
+Code is all the same in these three scripts above
+
+	WARCOM_opf_patrol.sqf - Line 64 - notes in script
+
+	WARCOM_blu_patrol.sqf - Line 66 - notes in script
+
+Just changed the >AP amount from 200 to 80 or anything below 110 AP, needs testing as 80 may be too low, 
+I had it at 110 on another DUWS-R version and jets or helis do spawn after about 20 mins of game play if enemy AP is set to 110 at start 
+or they sometimes spawn at the start from the Random_veh.sqf script depending on the size of the zone if AP is set to 110.
+
+
+DUWS-R-AI-Revive.altis
+
+	Init.sqf  - Lines 32, 49, 51  - notes in script
+
+Now, Jigsor said that he cleaned something up around line 100 or 101 but I didn't see what he did and it looks normal to me.
+
+	Params.hpp - Lines 4, 5, 6 - just extra values added to activate the AIS revive system by default
+
+I did experiment with having the AIS revive system as revive_activated ==1 in the INIT.sqf and also by removing the "NEW" value in Params.hpp and setting the default value to 1 
+so that it runs at the same time as the DUWS-R revive system as I think there is quite a bit of functionality, like respawn with current loadout and I think position of respawn 
+that the DUWS-R system has in it and it worked fine other than after pressing escape to respawn with the AIS revive, the DUWS-R revive system kicks 
+in and brings up a green respawn button on the screen.  So you have to press respawn twice to respawn. 
+
+	Description.ext  - Line 37 - Just added #include "ais_injury\cfgFunctionsAIS.hpp"
+
+Oh Just realised that I'd put in an earplugs script, its just an earplugs folder and line 281 in the INIT.sqf as well as what you may have just seen in the description.ext CfgFunctions.
+It works well when in vehicles with other players, lowers volume to 20% by hitting the end key.
+
+\dialog\operative
+
+	Operator recruit.sqf - Line 34 - notes in script 
+
+\dialog
+
+	request_unit.sqf Line 14, 25, 36 etc
+
+Line 14 - "B_Soldier_F" createUnit [_spawnpos, _group, "", _skill, "private"] ; Old code
+if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};  was added to each soldier between the existing ""
+
+\Support
+
+	Paradrop.sqf Line 23, 29 etc
+
+if (revive_activated == 2) then {[_soldier1] execvm 'ais_injury\init_ais.sqf';}; was added to each soldier
+
+DUWS-R-AI-Revive-CAS-AIRFIX.altis
+
+This one just combines the two versions and adds the 2 CAS supports as they are needed to deal with the jets/helis.  I have the CAS supports as a jet fighter support and a Wipeout 
+bomber support but the wipeout could be a Chopper or maybe there needs to be 3 air support options.  Hope this all wasn't too messy for ya to read. 
+

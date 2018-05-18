@@ -56,6 +56,20 @@ _patrolRadius = round(_radius/2);
 //hint format["%1",_patrolRadius];
 [_vehGroup, _position, _patrolradius] call bis_fnc_taskPatrol;
 
+
 //_crews = _createdVehFnc select 1;   //
 //_driver = _crews select 0;          //DEBUG
 //addSwitchableUnit _driver;          //
+
+//Aircraft
+private ["_veh","_relDir","_vehDir","_height","_speed","_vel"];
+_veh = _createdVehFnc select 0;
+if ((_veh isKindOf "Plane") || (_veh isKindOf "Helicopter")) then {
+  _relDir = 0;
+  _vehDir = direction _veh;
+  if (_veh isKindOf "Plane") then {_height = 400; _speed = 180;};
+  if (_veh isKindOf "Helicopter") then {_height = 2000; _speed = 65;};
+  _vel = velocity _veh;
+  _veh setpos [( _position select 0) + (sin (_relDir -180)), (_position select 1) + (cos (_relDir -180)), _height];
+  _veh setVelocity [(_vel select 0)+(sin _vehDir*_speed), (_vel select 1)+(cos _vehDir*_speed), _vel select 2];
+};

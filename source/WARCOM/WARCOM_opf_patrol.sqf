@@ -61,8 +61,8 @@ WARCOM_opf_patrol_type = "";
 					["OPF_F","armored",_randomZone] execVM "WARCOM\random_veh_opf_patrol.sqf";
 				};
 				
-				if (WARCOM_opfor_ap>200) then {
-					["OPF_F","air",_randomZone] execVM "WARCOM\random_veh_opf_patrol.sqf";
+				if (WARCOM_opfor_ap>80) then {
+					["OPF_F","air",_randomZone] execVM "WARCOM\random_veh_opf_patrol.sqf"; //changed the WARCOM_opfor_ap>200 to WARCOM_opfor_ap>80  AP can only be set to 110 at start so hence no planes or helis
 				};
 
 			  };
