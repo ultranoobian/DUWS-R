@@ -1,9 +1,9 @@
 class Params {
     class Revive {
         title = "Revive";
-        values[] = {1,0};
-        texts[] = {"YES","NO"};
-        default = true;
+        values[] = {0,1,2};
+        texts[] = {"NO","NEW","AIS"};
+        default = 2;
     };
 
     class DeathPenalty {

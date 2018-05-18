@@ -31,6 +31,7 @@ switch (_selected_soldier_status) do
 if (!_proceed) exitWith {hint "You don't have enough Command Points"};
 
 _soldier = group player createUnit [_selected_soldier_class, [getpos hq_blu1 select 0, (getpos hq_blu1 select 1)+20], [], 0, "FORM"];
+if (revive_activated == 2) then {[_soldier] execvm 'ais_injury\init_ais.sqf';}; //Adding AIS to each Spec Op as they spawn
 removeGoggles _soldier;
 _soldier setidentity _selected_soldier_identity;
 

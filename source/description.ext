@@ -34,5 +34,13 @@ disabledAI = 1;
 class CfgFunctions
 {
 	#include "taw_vd\CfgFunctions.hpp"
+	#include "ais_injury\cfgFunctionsAIS.hpp"
+		class training {
+		tag = "ep";
+		class functions {
+			file = "earplugs";
+			class earplugs {};
+		};
+	};
 };
 // TAW INIT END --
