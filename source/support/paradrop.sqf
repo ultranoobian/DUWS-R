@@ -20,42 +20,49 @@ _parachute1 = "Steerable_Parachute_F" CreateVehicle _lz;
 _parachute1 setPos [_lz select 0, _lz select 1, (_lz select 2)+150];
 _soldier1 = _group createUnit ["B_medic_F",[0,0,0],[],0,"form"];
 _soldier1 moveindriver _parachute1;
+if (revive_activated == 2) then {[_soldier1] execvm 'ais_injury\init_ais.sqf';};
 
 _parachute2 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute2 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier2 = _group createUnit ["B_Soldier_LAT_F",[0,0,0],[],0,"form"];
 _soldier2 moveindriver _parachute2;
+if (revive_activated == 2) then {[_soldier2] execvm 'ais_injury\init_ais.sqf';};
 
 _parachute3 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute3 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier3 = _group createUnit ["B_Soldier_GL_F",[0,0,0],[],0,"form"];
 _soldier3 moveindriver _parachute3;
+if (revive_activated == 2) then {[_soldier3] execvm 'ais_injury\init_ais.sqf';};
 
 _parachute1 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute1 setPos [_lz select 0, _lz select 1, (_lz select 2)+150];
 _soldier1 = _group createUnit ["B_soldier_gl_F",[0,0,0],[],0,"form"];
 _soldier1 moveindriver _parachute1;
+if (revive_activated == 2) then {[_soldier1] execvm 'ais_injury\init_ais.sqf';};
 
 _parachute2 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute2 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier2 = _group createUnit ["B_Soldier_ar_F",[0,0,0],[],0,"form"];
 _soldier2 moveindriver _parachute2;
+if (revive_activated == 2) then {[_soldier2] execvm 'ais_injury\init_ais.sqf';};
 
 _parachute3 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute3 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier3 = _group createUnit ["B_Soldier_F",[0,0,0],[],0,"form"];
 _soldier3 moveindriver _parachute3;
+if (revive_activated == 2) then {[_soldier3] execvm 'ais_injury\init_ais.sqf';};
 
 _parachute2 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute2 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier2 = _group createUnit ["B_Soldier_lat_F",[0,0,0],[],0,"form"];
 _soldier2 moveindriver _parachute2;
+if (revive_activated == 2) then {[_soldier2] execvm 'ais_injury\init_ais.sqf';};
 
 _parachute3 = "Steerable_Parachute_F" CreateVehicle _lz;  
 _parachute3 setPos [(_lz select 0)+(random _radius)-(random _radius), (_lz select 1)+(random _radius)-(random _radius), (_lz select 2)+150];
 _soldier3 = _group createUnit ["B_Soldier_ar_F",[0,0,0],[],0,"form"];
 _soldier3 moveindriver _parachute3;
-
+if (revive_activated == 2) then {[_soldier3] execvm 'ais_injury\init_ais.sqf';};
 
 sleep 60;
 

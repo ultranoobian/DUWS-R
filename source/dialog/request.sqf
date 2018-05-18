@@ -93,6 +93,8 @@ index_support_helotaxi = lbAdd [2103, "Helicopter Taxi(3CP)"];                //
 index_support_cluster = lbAdd [2103, "Mk.20 II CBU(25CP)"];                   // 10
 index_support_training = lbAdd [2103, "Specialized Infantry training(20CP)"]; // 11
 index_support_boattaxi = lbAdd [2103, "Boat Taxi(2CP)"];                      // 12
+index_support_HC_CAS = lbAdd [2103, "F/A-181 Fighter Support (20CP)"];           // 13
+index_support_HC_CAS1 = lbAdd [2103, "Wipeout CAS Support (25CP)"];              // 14
 
 //  lbSetCurSel [2103, 0];
 if (support_supplydrop_available) then {
@@ -133,4 +135,10 @@ if (support_specialized_training_available) then {
 };
 if (support_boattaxi_available) then {
     lbSetColor [2103, 12, [0, 1, 0, 1]];
+};
+if (support_HC_CAS_available) then {
+    lbSetColor [2103, 13, [0, 1, 0, 1]];
+};
+if (support_HC_CAS1_available) then {
+    lbSetColor [2103, 14, [0, 1, 0, 1]];
 };

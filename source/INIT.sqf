@@ -29,7 +29,7 @@ if(staminaEnabled == 0) then {
 if (isMultiplayer) then {
 
 	// Get the variables from the parameters lobby
-	_revive_activated = ["Revive", 1] call BIS_fnc_getParamValue;
+	revive_activated = ["Revive", 1] call BIS_fnc_getParamValue;
 	DUWSMP_CP_death_cost = ["DeathPenalty", 1] call BIS_fnc_getParamValue;
     //staminaEnabled = ["Stamina", 0] call BIS_fnc_getParamValue;
 
@@ -46,8 +46,16 @@ if (isMultiplayer) then {
         } forEach (Array_of_FOBS);
     };
 
-	if (_revive_activated == 1) then {execVM "duws_revive\reviveInit.sqf"};
-    
+	if (revive_activated == 1) then {execVM "duws_revive\reviveInit.sqf"};
+
+	// TcB AIS Wounding System --------------------------------------------------------------------------
+	if (revive_activated == 2) then {
+		if ((!isDedicated) || (!isServer)) then {
+			TCB_AIS_PATH = "ais_injury\";
+			{[_x] call compile preprocessFile (TCB_AIS_PATH+"init_ais.sqf")} forEach units group player;
+		};
+	};
+
 	PlayerKilledEH = player addEventHandler ["killed", {
         commandpointsblu1 = commandpointsblu1 - DUWSMP_CP_death_cost;
         publicVariable "commandpointsblu1";
@@ -92,14 +100,10 @@ if (isMultiplayer) then {
 	
 	if (!isServer) then {
         "savegameNumber" addPublicVariableEventHandler {[] execVM "savegameClient.sqf";};
-	};
-	if (!isServer) then {
         "capturedZonesNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_zones_add.sqf";}; // change the shown CP for request dialog	
-	};
-	if (!isServer) then {
         "finishedMissionsNumber" addPublicVariableEventHandler {[] execVM "persistent\persistent_stats_missions_total.sqf";}; // change the shown CP for request dialog	
-	};	
-		
+	};
+
 	player globalChat format ["gamemaster: %1", game_master];
 	player globalChat format ["HQ_pos_found_generated: %1", HQ_pos_found_generated];
 	
@@ -194,7 +198,11 @@ if (!isMultiplayer) then {
 
 // INIT the operative list
 execVM "dialog\operative\operator_init.sqf";
-
+_index = player createDiarySubject ["Earplugs","Earplugs"];
+player createDiaryRecord ["Earplugs", ["Earplugs", "Activate earplugs by hitting the end key"]];
+_index = player createDiarySubject ["revivehelp","AI Revive"];
+player createDiaryRecord ["revivehelp",["Known Issues", "- AI will sometimes stop responding to your commands. To avoid this you should always use the ""return to formation"" command on your entire group right after any revive has been performed by anyone in your group. If this does not work then simply delete the offending unit/s using the squad manager in your action menu.<br/><br/>- When using AI revive with other human players joined in your group, the  group leader position will change back and forth between the human players.<br/><br/> - AI may not ALWAYS revive the player 100% of the time. This is normal behavior and is to be expected sometimes, especially if the fighting gets very intense or the situation is too unsafe.<br/><br/>Injury script by: [TcB]-Psycho- many thanks for this!<br/>...special thanks must also go out to the coding skills of ""MDCCLXXVI"" from the Bohemia forums for fixing the command-loss issue"]];
+player createDiaryRecord ["revivehelp",["Overview", "Enabled/Disabled in the Parameters Menu:<br/>When enabled, the AI units that you purchase for your group will be able to revive you if you get injured and fall unconscious (you can use your 'H' key to call for help faster, but not necessary...but be patient with the AI they sometimes take a long time to reach you). All human players will also be able to revive.<br/><br/>Purchased High command groups cannot revive you, ONLY the 'Single Units', 'Special Operatives' AND Paradrop AI can revive.<br/><br/>NOTE:<br/><br/>If sometimes you need to respawn instead of waiting to be revived then hit escape/respawn.<br/><br/>This script is not 100% reliable and you may notice some odd happenings within your group units from time to time. It is being used here as an experimental addition to DUWS.<br/><br/>Injury script by: [TcB]-Psycho- many thanks for this!<br/>...and a thousand special thanks must also go out to the coding skills of ""MDCCLXXVI"" from the Bohemia forums for fixing the command-loss issue"]]; 
 // Create help for DUWS
 _index = player createDiarySubject ["help","DUWS-R Manual"]; 
 player createDiaryRecord ["help", ["Feedback/bug report", "Internal team members: Use the ""issues"" section to report items."]];
@@ -270,6 +278,9 @@ if (mission_DUWS_firstlaunch) then {
     saveProfileNamespace;
 };
 
+waitUntil {!(isNull (findDisplay 46))};
+(findDisplay 46) displayAddEventHandler ["KeyUp", "_this call ep_fnc_earplugs"];
+
 //Cleanup unused players.
 for[{_x = 2},{_x <= 20},{_x = _x + 1}] do {
     _thePlayer = missionNamespace getVariable format["player%1", _x];
@@ -282,7 +293,6 @@ for[{_x = 2},{_x <= 20},{_x = _x + 1}] do {
 
 
 _dynam = [player,"DynamicSupportMenu"] call BIS_fnc_addCommMenuItem;
-hq_blu1 addaction ["<t color='#2fff14'>TEST_RELOAD_GROUP</t>","reloadGroup.sqf", "", 6, true, true, "", "_this == player"];
 
 //Loading player position and gear.
 //TODO: Add bought supports.

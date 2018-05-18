@@ -130,4 +130,24 @@ class CfgCommunicationMenu
         enable = "1"; // Simple expression condition for enabling the item
         removeAfterExpressionCall = 1; // 1 to remove the item after calling
     };
+		class HC_CAS
+     {
+        text = "F/A-181 Fighter Support (15 CP)";
+        submenu = "";
+        expression = "_null = [] execVM 'support\hc_cas.sqf'";
+        icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
+        cursor = "";
+        enable = "1"; // Simple expression condition for enabling the item
+        removeAfterExpressionCall = 1; // 1 to remove the item after calling
+     };
+	class HC_CAS1
+     {
+        text = "Wipeout CAS Support (20 CP)";
+        submenu = "";
+        expression = "_null = [] execVM 'support\hc_cas1.sqf'";
+        icon = "\a3\ui_f\data\gui\cfg\hints\UnitType_ca.paa";
+        cursor = "";
+        enable = "1"; // Simple expression condition for enabling the item
+        removeAfterExpressionCall = 1; // 1 to remove the item after calling
+     };
 };

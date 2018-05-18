@@ -1,0 +1,260 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, checkForHealing">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"start",0,4346,-214.582474,-344.569397,-114.788307,-288.154358,0.000000,"start"};
+item1[] = {"true",8,218,-209.181534,-216.145309,-119.181534,-166.145309,0.000000,"true"};
+item2[] = {"Reset",2,250,-209.657379,-102.060112,-119.657356,-52.060093,0.000000,"Reset"};
+item3[] = {"INJURED",4,218,-208.680496,3.444658,-118.680496,53.444656,0.000000,"INJURED"};
+item4[] = {"waiting___",2,250,-207.703583,178.309036,-117.703568,228.309036,0.000000,"waiting..."};
+item5[] = {"was_healed",4,218,-66.053604,43.497406,23.946146,93.497437,1.000000,"was healed"};
+item6[] = {"self_heal",4,218,86.342079,178.309052,176.342224,228.309021,0.000000,"self heal"};
+item7[] = {"dead",4,218,-534.963989,177.332123,-444.963715,227.332184,100.000000,"dead"};
+item8[] = {"is_playable",4,218,-534.169067,-20.296722,-443.376740,29.283863,0.000000,"is" \n "playable"};
+item9[] = {"not_is_playable",4,218,-672.143433,-19.891502,-582.143311,30.108490,1.000000,"not is" \n "playable"};
+item10[] = {"exit",1,250,-659.130127,-329.781891,-594.534180,-288.901184,0.000000,"exit"};
+item11[] = {"is_dead",2,250,-534.425049,75.734924,-444.424927,125.734978,0.000000,"is dead"};
+item12[] = {"wait_for_respawn",2,250,-529.371704,-102.111153,-445.392212,-53.678604,0.000000,"wait for" \n "respawn"};
+item13[] = {"alive_again",4,218,-364.718323,-103.461327,-271.960419,-51.321198,0.000000,"alive" \n "again"};
+item14[] = {"build_delay",2,250,85.904167,-102.060127,175.904205,-52.060104,0.000000,"build delay"};
+item15[] = {"sleep",4,218,-66.151657,-101.890053,23.848356,-51.890053,0.000000,"sleep"};
+item16[] = {"",7,210,241.058563,-81.439713,249.058594,-73.439713,0.000000,""};
+item17[] = {"",7,210,241.058578,285.579742,249.058609,293.579742,0.000000,""};
+item18[] = {"",7,210,-494.127319,285.579742,-486.127289,293.579742,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {4,6};
+link6[] = {4,7};
+link7[] = {5,14};
+link8[] = {6,14};
+link9[] = {7,11};
+link10[] = {8,12};
+link11[] = {9,10};
+link12[] = {11,8};
+link13[] = {11,9};
+link14[] = {12,13};
+link15[] = {13,2};
+link16[] = {14,15};
+link17[] = {14,16};
+link18[] = {15,2};
+link19[] = {16,17};
+link20[] = {17,18};
+link21[] = {18,7};
+globals[] = {0.000000,0,0,0,0,640,480,1,70,6316128,1,-706.512451,270.676880,462.464630,-582.393860,852,911,1};
+window[] = {2,-1,-1,-1,-1,762,25,1284,25,3,870};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "checkForHealing";
+  class States
+  {
+    /*%FSM<STATE "start">*/
+    class start
+    {
+      name = "start";
+      init = /*%FSM<STATEINIT""">*/"// by psycho" \n
+       "// this .fsm is a workaround to check on a 100% local way if a unit was healed by a other unit or by self " \n
+       "" \n
+       "" \n
+       "private [""_unit"", ""_isplayable"", ""_name_unit"", ""_sleep""];" \n
+       "_unit = _this select 0;" \n
+       "" \n
+       "" \n
+       "_isplayable =" \n
+       "	if (isMultiplayer) then {" \n
+       "		if (_unit in playableUnits) then {true} else {false};" \n
+       "	} else {" \n
+       "		if (_unit in switchableUnits) then {true} else {false};" \n
+       "	};" \n
+       "" \n
+       "_unit addEventHandler [""HandleHeal"", {if ((_this select 0) == (_this select 1)) then {tcb_ais_selftreathing = true};}];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="Reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Reset">*/
+    class Reset
+    {
+      name = "Reset";
+      init = /*%FSM<STATEINIT""">*/"_unit setVariable [""tcb_ais_headhit"", 0];" \n
+       "_unit setVariable [""tcb_ais_handshit"", 0];" \n
+       "_unit setVariable [""tcb_ais_bodyhit"", 0];" \n
+       "_unit setVariable [""tcb_ais_legshit"", 0];" \n
+       "_unit setVariable [""tcb_ais_overall"", 0];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "INJURED">*/
+        class INJURED
+        {
+          priority = 0.000000;
+          to="waiting___";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"//toUpper(lifeState _unit) == ""INJURED""			<--- klar funktioniert die Abfrage nicht so wie im Wiki beschrieben... *facepalm!" \n
+           "" \n
+           "damage _unit > 0.1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "waiting___">*/
+    class waiting___
+    {
+      name = "waiting___";
+      init = /*%FSM<STATEINIT""">*/"tcb_ais_selftreathing = false;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 100.000000;
+          to="is_dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "was_healed">*/
+        class was_healed
+        {
+          priority = 1.000000;
+          to="build_delay";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"//toUpper(lifeState _unit) != ""INJURED""" \n
+           "" \n
+           "damage _unit <= 0.1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "self_heal">*/
+        class self_heal
+        {
+          priority = 0.000000;
+          to="build_delay";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"tcb_ais_selftreathing"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "exit">*/
+    class exit
+    {
+      name = "exit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "is_dead">*/
+    class is_dead
+    {
+      name = "is_dead";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "not_is_playable">*/
+        class not_is_playable
+        {
+          priority = 1.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_isplayable"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "is_playable">*/
+        class is_playable
+        {
+          priority = 0.000000;
+          to="wait_for_respawn";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_isplayable"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "wait_for_respawn">*/
+    class wait_for_respawn
+    {
+      name = "wait_for_respawn";
+      init = /*%FSM<STATEINIT""">*/"_name_unit = name _unit;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "alive_again">*/
+        class alive_again
+        {
+          priority = 0.000000;
+          to="Reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{_name_unit == name _x && alive _x} count playableUnits > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "build_delay">*/
+    class build_delay
+    {
+      name = "build_delay";
+      init = /*%FSM<STATEINIT""">*/"_sleep = time + 8;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 100.000000;
+          to="is_dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "sleep">*/
+        class sleep
+        {
+          priority = 0.000000;
+          to="Reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _sleep"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="start";
+  finalStates[] =
+  {
+    "exit",
+  };
+};
+/*%FSM</COMPILE>*/

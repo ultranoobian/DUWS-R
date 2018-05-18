@@ -57,11 +57,11 @@ WARCOM_opf_patrol_type = "";
 //			  _blu_assault = [_group,"derp"] execVM "WARCOM\WARCOM_gps_marker.sqf";  
 
 				// spawn armored
-				if (WARCOM_opfor_ap>50) then {
+				if (WARCOM_opfor_ap>150) then {
 					["OPF_F","armored",_randomZone] execVM "WARCOM\random_veh_opf_patrol.sqf";
 				};
 				
-				if (WARCOM_opfor_ap>200) then {
+				if (WARCOM_opfor_ap>80) then {
 					["OPF_F","air",_randomZone] execVM "WARCOM\random_veh_opf_patrol.sqf";
 				};
 

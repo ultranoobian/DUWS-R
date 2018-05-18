@@ -9,6 +9,8 @@ support_veh_refit_available = false;
 support_helotaxi_available = false;
 support_boattaxi_available = false;
 support_cluster_available = false;
+support_HC_CAS_available = false;
+support_HC_CAS1_available = false;
 
 if (isNil "support_specialized_training_available") then {
     support_specialized_training_available = false;
@@ -30,5 +32,7 @@ support_jdam_timeout = 0;
 support_arty_timeout = 0;
 support_cluster_timeout = 0;
 support_uav_recon_timeout = 0;
+support_HC_CAS_timeout = 0;
+support_HC_CAS1_timeout = 0;
 //support_helotaxi_timeout = 0; format may not be suitable
 //support_boattaxi_timeout = 0;

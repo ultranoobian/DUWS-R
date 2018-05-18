@@ -11,7 +11,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 2;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_Soldier_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_Soldier_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         }  else  {
             hint "Not enough command points";
         };
@@ -22,7 +22,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 3;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_Soldier_GL_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_Soldier_GL_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         }  else  {
             hint "Not enough command points";
         };
@@ -33,7 +33,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 3;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_Soldier_AR_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_Soldier_AR_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -44,7 +44,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 3;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_Soldier_LAT_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_Soldier_LAT_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -55,7 +55,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 4;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_medic_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_medic_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -66,7 +66,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 4;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_soldier_AA_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_soldier_AA_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -77,7 +77,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 4;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_soldier_repair_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_soldier_repair_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -88,7 +88,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 4;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_soldier_AT_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_soldier_AT_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -99,7 +99,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 3;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_diver_F" createUnit [_spawnpos, _group, "", _skillSF, "private"] ;
+            "B_diver_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skillSF, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -110,7 +110,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 3;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_soldier_M_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_soldier_M_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -121,7 +121,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 4;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_sniper_F" createUnit [_spawnpos, _group, "", _skillSF, "private"] ;
+            "B_sniper_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skillSF, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -132,7 +132,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 3;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_spotter_F" createUnit [_spawnpos, _group, "", _skillSF, "private"] ;
+            "B_spotter_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skillSF, "private"] ;
         } else {
             hint "Not enough command points";
         };
@@ -143,7 +143,7 @@ switch (_index) do {
             commandpointsblu1 = commandpointsblu1 - 4;
             ctrlSetText [1000, format["%1",commandpointsblu1]];
             _group = group player ;
-            "B_soldier_exp_F" createUnit [_spawnpos, _group, "", _skill, "private"] ;
+            "B_soldier_exp_F" createUnit [_spawnpos, _group, "if (revive_activated == 2) then {[this] execvm 'ais_injury\init_ais.sqf'};", _skill, "private"] ;
         } else {
             hint "Not enough command points";
         };

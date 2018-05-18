@@ -211,26 +211,33 @@ switch (_index2) do {
     };
 	case 13: {
         if (commandpointsblu1 >= 20) then {
-                commandpointsblu1 = commandpointsblu1 - 20;
-                ctrlSetText [1000, format["%1",commandpointsblu1]];
-                //lbSetColor [2103, index_support_boattaxi, [0, 1, 0, 1]];
-                _supplydrop = [player,"HC_CAS"] call BIS_fnc_addCommMenuItem;
-                playSound "boots";
+            if (!support_HC_CAS_available) then {
+			commandpointsblu1 = commandpointsblu1 - 20;
+			ctrlSetText [1000, format["%1",commandpointsblu1]];
+			lbSetColor [2103, index_support_HC_CAS, [0, 1, 0, 1]];
+            support_CAS_available = true;
+			playSound "boots";
+            } else {
+                hint "This support is already available";
+            };
         } else {
             hint "Not enough command points";
         };
     };
     case 14: {
         if (commandpointsblu1 >= 25) then {
+			if (!support_HC_CAS1_available) then {
                 commandpointsblu1 = commandpointsblu1 - 25;
                 ctrlSetText [1000, format["%1",commandpointsblu1]];
-                //lbSetColor [2103, index_support_boattaxi, [0, 1, 0, 1]];
-                _supplydrop = [player,"HC_CAS1"] call BIS_fnc_addCommMenuItem;
+                lbSetColor [2103, index_support_HC_CAS1, [0, 1, 0, 1]];
+                support_CAS1_available = true;
                 playSound "boots";
+            } else {
+                hint "This support is already available";
+            };
         } else {
             hint "Not enough command points";
         };
-    };
 };
 //hint format["index: %1",_index2];
 publicVariable "commandpointsblu1";

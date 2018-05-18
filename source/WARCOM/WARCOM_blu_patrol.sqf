@@ -63,7 +63,7 @@ diag_log format ["WARCOM_blufor_ap_patrol: %1", WARCOM_blufor_ap];
 					["BLU_F","armored",_randomZone] execVM "WARCOM\random_veh_blu_patrol.sqf";
 				};
 				
-				if (WARCOM_blufor_ap>200) then {
+				if (WARCOM_blufor_ap>80) then {
 					["BLU_F","air",_randomZone] execVM "WARCOM\random_veh_blu_patrol.sqf";
 				};
 
