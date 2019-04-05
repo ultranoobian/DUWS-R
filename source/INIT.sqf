@@ -6,28 +6,32 @@ if (isServer) then { nul = [] execVM "serverinit.sqf"; };
 if (isDedicated) exitWith {};
 
 // Wait until player isn't null, so any code following can run properly.
-waitUntil {!isNull player};
+waitUntil { !isNull player };
 
 player allowDamage false;
 
 persistent_stat_script_init = [] execVM "persistent\persistent_stats_init.sqf";
-waitUntil {scriptDone persistent_stat_script_init};
-execvm "dynamic_music\dyn_music_init.sqf";
+waitUntil { scriptDone persistent_stat_script_init };
 
+// Dynamic music does not seem to work
+execvm "dynamic_music\dyn_music_init.sqf";
 
 #include "dialog\supports_init.hpp"
 #include "dialog\squad_number_init.hpp"
-	
-if (hasInterface) then { execVM "misc\gps_marker.sqf";};
-if (!isMultiplayer) then {
-	getsize_script = [player] execVM "mapsize.sqf";
-};
+
+// Creates marker on the map that follows the player.	
+if (hasInterface) then { execVM "misc\gps_marker.sqf"; };
+// Calculates map size and map center point.
+if (!isMultiplayer) then { getsize_script = [player] execVM "mapsize.sqf"; };
+
+// Get & set parameter to flag enable/disable A3's new stamina system (Not to be confused unlimited stamina)
 staminaEnabled = ["Stamina", false] call BIS_fnc_getParamValue;
 if(staminaEnabled == 0) then {
     staminaEnabled = false;
 } else {
     staminaEnabled = true;
 };
+
 // IF MP
 if (isMultiplayer) then {
 
