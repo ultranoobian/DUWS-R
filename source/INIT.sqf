@@ -1,8 +1,11 @@
 diag_log format ["------------------ DUWS-R START ----v0------ player: %1", profileName];
 
-
+// If server is being hosted, then execute server-only code
 if (isServer) then { nul = [] execVM "serverinit.sqf"; };
+// If server is dedicated server, then no further player code is executed.
 if (isDedicated) exitWith {};
+
+// Wait until player isn't null, so any code following can run properly.
 waitUntil {!isNull player};
 
 player allowDamage false;
