@@ -31,13 +31,7 @@ if (isMultiplayer) then {
 	// Get the variables from the parameters lobby
 	_revive_activated = ["Revive", 1] call BIS_fnc_getParamValue;
 	DUWSMP_CP_death_cost = ["DeathPenalty", 1] call BIS_fnc_getParamValue;
-    //staminaEnabled = ["Stamina", 0] call BIS_fnc_getParamValue;
 
-    /*if(staminaEnabled == 0) then {
-        staminaEnabled = false;
-    } else {
-        staminaEnabled = true;
-    };*/
 
     if (support_armory_available) then {
         hq_blu1 addaction ["<t color='#ff0066'>Armory (VA)</t>","bisArsenal.sqf", "", 0, true, true, "", "_this == player"];
@@ -133,20 +127,6 @@ if (!isDedicated && !HQ_pos_found_generated) then {
 		};
 	};
 };
-	
-/*
-//////// DEBUG LOOP /////////////
-[] spawn {
-	while {true} do {
-	hintsilent format["OvercastVar: %1\nFogVar: %2",OvercastVar,FogVar];
-	sleep 1;
-	};
-};
-//////// DEBUG LOOP /////////////
-*/
-
-// AMBIANCE LOOP
-//_nul = [] execVM "musicloop.sqf";
 
 if (isServer) then {
     // group cleaning script
@@ -283,14 +263,4 @@ for[{_x = 2},{_x <= 20},{_x = _x + 1}] do {
 
 _dynam = [player,"DynamicSupportMenu"] call BIS_fnc_addCommMenuItem;
 
-//Loading player position and gear.
-//TODO: Add bought supports.
-/*
-if(isServer) then 
-{	
-	execVM "persistent\missionSpecific\saveFuncs.sqf";
-	waitUntil {!isNil "saveFuncsLoaded"};
 
-	execVM "persistent\missionSpecific\loadAccount.sqf";
-};
-*/
